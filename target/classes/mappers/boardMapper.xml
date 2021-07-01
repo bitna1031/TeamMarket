@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.board">
+
+	<delete id="deleteAllFilenameByBno">
+		DELETE FROM attach WHERE bno = #{bno}
+	</delete>
+
+	<delete id="deleteFilename">
+		DELETE FROM attach WHERE filename = #{filename}
+	</delete>
+	
+	<select id="getAttach" resultType="string">
+		SELECT * FROM attach WHERE bno = #{bno}
+	</select>
+	
+	<insert id="addAttach">
+		INSERT INTO attach (filename, bno) VALUES (#{filename}, #{bno})
+	</insert>
+
+	<update id="increaseReadcnt">
+		UPDATE board SET readcnt = readcnt + 1 WHERE bno = #{bno}
+	</update>
+
+	<insert id="insert">
+		insert into board (bno, title, content, userId) values
+		((select nvl2(max(bno),max(bno)+1,1) from board),#{title},#{content},#{userId})
+	
+		<selectKey order="AFTER" keyProperty="bno" resultType="Integer">
+			SELECT MAX(bno) FROM board
+		</selectKey>
+	
+	</insert>
+
+	<select id="list" resultType="BoardVO">
+		select b.bno, b.title, b.readcnt, b.content, b.userId, to_char(b.updatedate,'yyyy-mm-dd') as updatedate ,
+		(SELECT COUNT(*) FROM reply WHERE bno = b.bno) as recnt from board b ORDER BY b.bno DESC
+	</select>
+	
+	<select id="read" resultType="kr.co.domain.BoardVO">
+		select bno, title, content, userId,to_char(updatedate, 'YYYY-MM-DD') as updatedate
+		from board where bno = #{bno}
+	</select>
+	
+	<update id="update">
+		update board SET title = #{title}, content = #{content}, userId = #{userId}, 
+		updatedate = SYSDATE where bno = #{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from board where bno = #{bno}
+	</delete>
+	
+	<select id="getAmount" resultType="integer">
+		select COUNT(bno) from board
+	
+	</select>
+	
+	
+	
+	
+</mapper>

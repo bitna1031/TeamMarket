@@ -1,0 +1,55 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.hrefType:link{
+	color: black;
+}
+.hrefType:visited{
+	color: black;
+}
+.pagestyle > .active > a{
+	background-color: pink;
+	border: 0;
+}
+.pagestyle > .active > a:link{
+	color: black;
+}
+.pagestyle > .active > a:visited{
+	color: #FF4DB3;
+}
+.pagination > li > a:link{
+	color: black;
+}
+.pagination > li > a:visited{
+	color: #FF4DB3;
+}
+.pagestyle > .active > a:hover{
+	background-color: pink;
+	border: 0;
+}
+.pagination > li > a{
+	background-color: white;
+	border: 0;
+}
+
+
+body {
+ 	font-family: 'Jeju Gothic', sans-serif;
+}
+.jumbotron{
+	background-color: #FCF0F7;
+	text-align: center;
+	padding-top: 0;
+	
+}
+.bodystyle{
+	width: 600px;
+	height: auto; 
+	margin: auto;
+}
+.bigbody{
+	width: 1000px;
+	margin: auto;
+}
+h4{
+	margin-bottom: 20px;
+}

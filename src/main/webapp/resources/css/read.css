@@ -1,0 +1,28 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.hrefType:link{
+	color: black;
+}
+.hrefType:visited{
+	color: black;
+}
+body {
+ 	font-family: 'Jeju Gothic', sans-serif;
+}
+.jumbotron{
+	background-color: #FCF0F7;
+	text-align: center;
+	padding-top: 0;
+}
+.bodystyle{
+	width: 600px;
+	height: auto; 
+	margin: auto;
+}
+.bigbody{
+	width: 1000px;
+	margin: auto;
+}
+h4{
+	margin-bottom: 20px;
+}
